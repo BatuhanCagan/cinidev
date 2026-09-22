@@ -1,0 +1,36 @@
+{% extends "_layout.html" %}
+{% block title %}ÇiniDev - Activity Log{% endblock %}
+{% block content %}
+<header class="mb-8">
+    <h2 class="text-[32px] font-bold text-primary tracking-tight mb-1">Activity Log</h2>
+    <p class="text-tertiary text-[14px]">Audit trail of project creation, deletion, start/stop, and configuration changes.</p>
+</header>
+
+{% if not events %}
+<div class="flex-1 flex flex-col items-center justify-center text-center py-20 text-tertiary">
+    <span class="material-symbols-outlined text-[48px] mb-3 opacity-50">history</span>
+    <p class="text-[15px]">No activity recorded yet.</p>
+</div>
+{% else %}
+{% set icon_map = {'created': 'add_circle', 'deleted': 'delete', 'started': 'play_circle', 'stopped': 'stop_circle', 'config_updated': 'tune', 'start_failed': 'error', 'crashed': 'warning'} %}
+{% set label_map = {'created': 'created', 'deleted': 'deleted', 'started': 'started', 'stopped': 'stopped', 'config_updated': 'config updated', 'start_failed': 'failed to start', 'crashed': 'exited unexpectedly'} %}
+<div class="glazed-card rounded-2xl overflow-hidden mb-8">
+    <div class="flex flex-col">
+        {% for event in events %}
+        {% set is_error = event.action in ('start_failed', 'crashed') %}
+        <div class="flex items-center gap-4 px-5 py-3.5 border-b border-outline-variant/30 last:border-b-0 hover:bg-surface-variant/20 transition-colors {{ 'bg-red-50/40' if is_error }}">
+            <span class="material-symbols-outlined text-[20px] {{ 'text-error' if is_error else 'text-primary/70' }}">{{ icon_map.get(event.action, 'bolt') }}</span>
+            <div class="flex-1 min-w-0">
+                <span class="font-semibold text-[14px] text-primary">{{ event.project }}</span>
+                <span class="text-[14px] text-tertiary"> {{ label_map.get(event.action, event.action) }}</span>
+                {% if event.details %}
+                <span class="font-mono text-[12px] text-tertiary/70"> — {{ event.details }}</span>
+                {% endif %}
+            </div>
+            <span class="font-mono text-[12px] text-tertiary whitespace-nowrap">{{ event.timestamp.replace('T', ' ') }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endblock %}

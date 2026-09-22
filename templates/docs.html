@@ -1,0 +1,11 @@
+{% extends "_layout.html" %}
+{% block title %}ÇiniDev - Documentation{% endblock %}
+{% block content %}
+<header class="mb-6">
+    <h2 class="text-[32px] font-bold text-primary tracking-tight mb-1">Documentation</h2>
+    <p class="text-tertiary text-[14px]">Rendered from the project's README.md.</p>
+</header>
+<div class="glazed-card rounded-2xl p-8 mb-8 prose-docs">
+    {{ content | safe }}
+</div>
+{% endblock %}

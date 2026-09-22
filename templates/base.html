@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ÇiniDev - Main Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f0f2",
+                        "primary-fixed": "#d6e3ff",
+                        "primary": "#002652",
+                        "secondary": "#006b5f",
+                        "surface-variant": "#e2e2e4",
+                        "on-primary-container": "#80a7ed",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#aac7ff",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "outline-variant": "#c3c6d2",
+                        "tertiary-container": "#7e0017",
+                        "secondary-container": "#76f4e0",
+                        "surface-tint": "#345e9f",
+                        "on-secondary-fixed": "#00201c",
+                        "secondary-fixed-dim": "#59dbc7",
+                        "on-secondary-fixed-variant": "#005047",
+                        "on-primary-fixed": "#001b3e",
+                        "tertiary": "#55000c",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e4",
+                        "surface-container-low": "#f3f3f5",
+                        "surface-container-high": "#e8e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d9dadc",
+                        "inverse-surface": "#2f3132",
+                        "background": "#f9f9fb",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-secondary-container": "#006f63",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1a1c1d",
+                        "surface-bright": "#f9f9fb",
+                        "on-surface": "#1a1c1d",
+                        "on-primary-fixed-variant": "#154685",
+                        "outline": "#737781",
+                        "surface": "#f9f9fb",
+                        "on-tertiary-container": "#ff8080",
+                        "secondary-fixed": "#79f7e3",
+                        "surface-container": "#edeef0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdad8",
+                        "on-surface-variant": "#434750",
+                        "on-tertiary-fixed": "#410007",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#aac7ff",
+                        "primary-container": "#003b7a",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "16px",
+                        "gutter": "24px",
+                        "section-margin": "48px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        /* Iznik Ceramic Patterns */
+        .ceramic-border-top {
+            background-image: repeating-linear-gradient(45deg, #002652 0, #002652 4px, #006b5f 4px, #006b5f 8px);
+            opacity: 0.8;
+        }
+
+        .divider-diamond {
+            width: 6px;
+            height: 6px;
+            transform: rotate(45deg);
+            background-color: #002652; /* Cobalt */
+        }
+
+        /* Glazed surface effect */
+        .glazed-surface {
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%), var(--tw-colors-surface-container-lowest);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0px 4px 20px rgba(0,59,122,0.05);
+        }
+
+        /* Custom Scrollbar for Terminal */
+        .terminal-scroll::-webkit-scrollbar { width: 8px; }
+        .terminal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: rgba(118, 244, 224, 0.2); border-radius: 4px; }
+        .terminal-scroll::-webkit-scrollbar-thumb:hover { background: rgba(118, 244, 224, 0.4); }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex h-screen overflow-hidden antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- JSON: SideNavBar (Desktop) -->
+<nav class="hidden lg:flex flex-col w-[280px] p-4 gap-4 bg-surface-container-lowest border-r border-outline-variant shadow-none h-full z-10">
+<!-- Header -->
+<div class="flex items-center gap-3 mb-6 px-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined icon-fill">view_in_ar</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Project Workspace</h1>
+<p class="font-label-md text-label-md text-on-surface-variant text-[12px]">VPC: Istanbul-North</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-1">
+<!-- Active: Projects -->
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all opacity-80" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-body-md text-body-md">Projects</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-body-md text-body-md">Deployments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md text-body-md">Resource Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-body-md text-body-md">Security Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Documentation</span>
+</a>
+</div>
+<!-- CTA -->
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors shadow-sm mb-4">
+<span class="material-symbols-outlined" style="font-size: 18px;">terminal</span>
+            Quick Terminal
+        </button>
+<!-- Footer Links -->
+<div class="flex flex-col gap-1 pt-4 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col relative overflow-hidden">
+<!-- JSON: TopNavBar (Mobile Only) -->
+<nav class="lg:hidden flex justify-between items-center w-full px-container-padding h-16 sticky top-0 z-50 bg-surface shadow-[0px_4px_20px_rgba(0,59,122,0.05)] border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">ÇiniDev</span>
+</div>
+<div class="flex gap-4">
+<!-- Active Navigation (Semantic mapping to Projects/Dashboard) -->
+<a class="text-primary font-bold border-b-2 border-secondary pb-4 pt-4 scale-95 transition-transform duration-150 flex items-center h-full mt-[2px]" href="#">
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Inactive Navigation -->
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center h-full" href="#">
+<span class="font-label-md text-label-md">Infrastructure</span>
+</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full border border-outline-variant bg-surface-variant" data-alt="A small circular avatar placeholder image showing a developer profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3mqePp1Wb95IdWg29NB_q3iM5RyqHnsvt4JafQMvfubm40MRKmRACp86NatQgtkoSuVaTb6NEEahWm_dzJH5-hWfDi_K7AzfXOIqe_r7oD73MEQENzFBQ0Rk2oygRSVK3irPQfrZ7PQCEMD6bE7UJPo4vv6fa9rAEIQj-EKyyTKqAu10BUiWo6nEUmO9ylYqY_ENIDbwNNGK2If5GDlSVCNerYeIF_krFwAgt5lcKqvdqHrkLwaXB"/>
+</div>
+</nav>
+<!-- Page Canvas -->
+<main class="flex-1 overflow-y-auto px-container-padding py-section-margin relative">
+<div class="max-w-7xl mx-auto flex flex-col h-full">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-2">My Local Projects</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage and monitor your active local environments.</p>
+</div>
+<!-- Turquoise Ceramic Style Button -->
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-md text-label-md shadow-[0_4px_12px_rgba(0,107,95,0.2)] hover:shadow-[0_6px_16px_rgba(0,107,95,0.3)] hover:-translate-y-0.5 transition-all border border-secondary-fixed flex items-center gap-2 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined font-bold">add</span>
+                        Add New Project
+                    </button>
+</header>
+<!-- Custom Divider with Diamond Motif -->
+<div class="flex items-center w-full mb-8 opacity-40">
+<div class="flex-1 h-px bg-primary/20"></div>
+<div class="mx-2 divider-diamond"></div>
+<div class="flex-1 h-px bg-primary/20"></div>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-section-margin">
+<!-- Card 1: my-flask-api -->
+<div class="glazed-surface rounded-xl overflow-hidden flex flex-col border border-primary/10 hover:-translate-y-1 transition-transform duration-300 group">
+<div class="h-1 w-full ceramic-border-top"></div>
+<div class="p-card-gap flex-1 flex flex-col bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-1">my-flask-api</h3>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">Python</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">Flask</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-on-secondary-container border border-secondary-container font-label-md text-[12px] flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                                    Running
+                                </span>
+</div>
+<div class="bg-background rounded-lg p-3 border border-outline-variant/30 mb-4 font-code-sm text-code-sm text-on-surface-variant flex flex-col gap-1.5">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">folder</span> <span class="truncate">/home/user/projects/api</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">router</span> <span>Port 5000</span></div>
+</div>
+<div class="flex flex-col gap-3 mb-6">
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>CPU</span> <span>15%</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[15%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>RAM</span> <span>120MB</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[30%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between gap-2">
+<button class="flex-1 py-1.5 border border-error text-error rounded font-label-md text-label-md hover:bg-error/10 transition-colors">Stop</button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:bg-surface-variant/50 transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:text-error hover:border-error transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Card 2: node-backend -->
+<div class="glazed-surface rounded-xl overflow-hidden flex flex-col border border-primary/10 hover:-translate-y-1 transition-transform duration-300 group opacity-90 hover:opacity-100">
+<div class="h-1 w-full bg-outline-variant"></div> <!-- Greyed out ceramic strip -->
+<div class="p-card-gap flex-1 flex flex-col bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-[20px] text-on-surface-variant mb-1">node-backend</h3>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">Node.js</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">Express</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant border border-outline-variant/50 font-label-md text-[12px] flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-outline"></div>
+                                    Stopped
+                                </span>
+</div>
+<div class="bg-background rounded-lg p-3 border border-outline-variant/30 mb-4 font-code-sm text-code-sm text-on-surface-variant flex flex-col gap-1.5">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">folder</span> <span class="truncate">/home/user/projects/node-app</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">router</span> <span>Port 3000</span></div>
+</div>
+<div class="flex flex-col gap-3 mb-6 opacity-50">
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>CPU</span> <span>0%</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden"></div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>RAM</span> <span>0MB</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden"></div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between gap-2">
+<button class="flex-1 py-1.5 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-primary/90 transition-colors shadow-sm">Start</button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:bg-surface-variant/50 transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:text-error hover:border-error transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+<!-- Card 3: react-frontend -->
+<div class="glazed-surface rounded-xl overflow-hidden flex flex-col border border-primary/10 hover:-translate-y-1 transition-transform duration-300 group">
+<div class="h-1 w-full ceramic-border-top"></div>
+<div class="p-card-gap flex-1 flex flex-col bg-surface-container-lowest">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-[20px] text-primary mb-1">react-frontend</h3>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">React</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-md text-[11px]">Tailwind</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-on-secondary-container border border-secondary-container font-label-md text-[12px] flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                                    Running
+                                </span>
+</div>
+<div class="bg-background rounded-lg p-3 border border-outline-variant/30 mb-4 font-code-sm text-code-sm text-on-surface-variant flex flex-col gap-1.5">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">folder</span> <span class="truncate">/home/user/projects/web</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-primary/60">router</span> <span>Port 3000</span></div>
+</div>
+<div class="flex flex-col gap-3 mb-6">
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>CPU</span> <span>5%</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[5%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-md text-[11px] text-outline mb-1"><span>RAM</span> <span>85MB</span></div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[20%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant/20 flex justify-between gap-2">
+<button class="flex-1 py-1.5 border border-error text-error rounded font-label-md text-label-md hover:bg-error/10 transition-colors">Stop</button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:bg-surface-variant/50 transition-colors"><span class="material-symbols-outlined text-[18px]">settings</span></button>
+<button class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded hover:text-error hover:border-error transition-colors"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer to push terminal down if needed, though terminal is in normal flow here at the bottom of content -->
+<div class="flex-1"></div>
+<!-- Terminal Section -->
+<section class="mt-8 bg-primary rounded-xl overflow-hidden shadow-[0px_12px_40px_rgba(0,59,122,0.12)] border border-primary-fixed-dim/20 relative z-20 flex flex-col transition-all duration-300" id="log-terminal">
+<!-- Terminal Header -->
+<div class="bg-[#001836] px-4 py-3 flex justify-between items-center cursor-pointer border-b border-primary-fixed/10" onclick="document.getElementById('terminal-body').classList.toggle('hidden'); document.getElementById('term-icon').classList.toggle('rotate-180')">
+<div class="flex items-center gap-2 text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<h4 class="font-label-md text-label-md tracking-wide">Log Terminal</h4>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#fbbc04]"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<span class="material-symbols-outlined text-outline-variant transition-transform duration-300" id="term-icon">expand_more</span>
+</div>
+</div>
+<!-- Terminal Body -->
+<div class="bg-[#00132b] p-4 h-48 overflow-y-auto terminal-scroll font-code-sm text-code-sm" id="terminal-body">
+<div class="flex flex-col gap-1">
+<div class="text-primary-fixed-dim"><span class="text-secondary-fixed opacity-70">[10:42:01]</span> System initialized. Loading Iznik ceramic profiles...</div>
+<div class="text-primary-fixed-dim"><span class="text-secondary-fixed opacity-70">[10:42:05]</span> <span class="text-secondary-container">SUCCESS:</span> Connected to local daemon.</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:42:12]</span> [my-flask-api] * Serving Flask app 'main'</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:42:12]</span> [my-flask-api] * Debug mode: on</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:42:13]</span> [my-flask-api] * Running on http://127.0.0.1:5000</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:45:30]</span> [react-frontend] ready - started server on 0.0.0.0:3000, url: http://localhost:3000</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:45:32]</span> [react-frontend] info  - loaded env from /home/user/projects/web/.env.local</div>
+<div class="text-primary-fixed-dim"><span class="text-secondary-fixed opacity-70">[10:48:15]</span> <span class="text-error-container">WARN:</span> Node backend gracefully stopped by user.</div>
+<div class="text-on-primary opacity-90"><span class="text-secondary-fixed opacity-70">[10:50:01]</span> [my-flask-api] 127.0.0.1 - - [24/Oct/2023 10:50:01] "GET /api/health HTTP/1.1" 200 -</div>
+<div class="flex items-center gap-2 text-secondary-fixed mt-2">
+<span>~/workspace/cinidev $</span>
+<span class="w-2 h-4 bg-secondary-fixed animate-pulse"></span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

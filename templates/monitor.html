@@ -1,0 +1,86 @@
+{% extends "_layout.html" %}
+{% block title %}ÇiniDev - Resource Monitor{% endblock %}
+{% block content %}
+<header class="mb-8">
+    <h2 class="text-[32px] font-bold text-primary tracking-tight mb-1">Resource Monitor</h2>
+    <p class="text-tertiary text-[14px]">Real-time CPU and RAM usage of your running projects (psutil).</p>
+</header>
+
+{% if not projects %}
+<div class="flex-1 flex flex-col items-center justify-center text-center py-20 text-tertiary">
+    <span class="material-symbols-outlined text-[48px] mb-3 opacity-50">monitoring</span>
+    <p class="text-[15px]">No projects to monitor yet. Add one first.</p>
+</div>
+{% else %}
+<div class="glazed-card rounded-2xl overflow-hidden">
+    <table class="w-full text-left">
+        <thead>
+            <tr class="bg-surface-variant/50 text-tertiary font-mono text-[12px] font-medium">
+                <th class="px-5 py-3">Project</th>
+                <th class="px-5 py-3">Status</th>
+                <th class="px-5 py-3">CPU</th>
+                <th class="px-5 py-3">RAM</th>
+                <th class="px-5 py-3">Uptime</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr class="border-t border-outline-variant/40 monitor-row" data-project-id="{{ project.id }}">
+                <td class="px-5 py-3.5">
+                    <div class="font-semibold text-[14px] text-primary">{{ project.name }}</div>
+                    <div class="font-mono text-[11px] text-tertiary truncate max-w-[260px]">{{ project.path }}</div>
+                </td>
+                <td class="px-5 py-3.5">
+                    {% if project.is_running %}
+                    <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-[11px] font-semibold">RUNNING</span>
+                    {% else %}
+                    <span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-500 border border-gray-200 font-mono text-[11px] font-medium">STOPPED</span>
+                    {% endif %}
+                </td>
+                <td class="px-5 py-3.5 font-mono text-[13px] stat-cpu">—</td>
+                <td class="px-5 py-3.5 font-mono text-[13px] stat-ram">—</td>
+                <td class="px-5 py-3.5 font-mono text-[13px] stat-uptime">—</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function formatUptime(seconds) {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = seconds % 60;
+        if (h > 0) return `${h}h ${m}m`;
+        if (m > 0) return `${m}m ${s}s`;
+        return `${s}s`;
+    }
+    async function pollStats() {
+        try {
+            const res = await fetch('/api/stats');
+            const data = await res.json();
+            document.querySelectorAll('.monitor-row').forEach(row => {
+                const id = row.dataset.projectId;
+                const s = data.stats[id];
+                const cpuEl = row.querySelector('.stat-cpu');
+                const ramEl = row.querySelector('.stat-ram');
+                const upEl = row.querySelector('.stat-uptime');
+                if (s) {
+                    cpuEl.textContent = s.cpu_percent + '%';
+                    ramEl.textContent = s.memory_mb + ' MB';
+                    upEl.textContent = formatUptime(s.uptime_seconds);
+                } else {
+                    cpuEl.textContent = '—';
+                    ramEl.textContent = '—';
+                    upEl.textContent = '—';
+                }
+            });
+        } catch(e) {}
+    }
+    setInterval(pollStats, 2000);
+    pollStats();
+</script>
+{% endblock %}

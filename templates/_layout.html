@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}ÇiniDev{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#002652",
+                        "primary-hover": "#003b7a",
+                        "secondary": "#006b5f",
+                        "secondary-hover": "#005249",
+                        "turquoise-glow": "#76f4e0",
+                        "background": "#f9f9fb",
+                        "surface": "#f9f9fb",
+                        "surface-card": "#ffffff",
+                        "surface-bright": "#ffffff",
+                        "surface-variant": "#f0f2f5",
+                        "outline-variant": "#dcdfe6",
+                        "error": "#ba1a1a",
+                        "tertiary": "#605d64"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .ceramic-pattern-border {
+            background-image: repeating-linear-gradient(135deg, #002652 0px, #002652 8px, #006b5f 8px, #006b5f 16px, #76f4e0 16px, #76f4e0 20px);
+        }
+        .iznik-border {
+            background-image: repeating-linear-gradient(45deg, #002652 0, #002652 2px, transparent 2px, transparent 4px, #006b5f 4px, #006b5f 6px, transparent 6px, transparent 8px);
+        }
+        .glazed-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+            box-shadow: 0 4px 24px -4px rgba(0, 38, 82, 0.06), 0 1px 2px 0 rgba(0, 38, 82, 0.04);
+            border: 1px solid rgba(0, 38, 82, 0.08);
+        }
+        .glazed-card:hover {
+            box-shadow: 0 12px 32px -4px rgba(0, 38, 82, 0.12), 0 2px 6px 0 rgba(0, 38, 82, 0.06);
+            border-color: rgba(0, 107, 95, 0.3);
+        }
+        .shadow-elevation-2 {
+            box-shadow: 0px 12px 40px rgba(0, 59, 122, 0.12), inset 0 0 0 1px #ffffff;
+        }
+        .diamond-divider { display: flex; align-items: center; justify-content: center; }
+        .diamond-divider::before, .diamond-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 38, 82, 0.15), transparent);
+        }
+        .diamond-node {
+            width: 7px; height: 7px; transform: rotate(45deg);
+            background-color: #002652; margin: 0 12px; opacity: 0.6;
+        }
+        .terminal-scroll::-webkit-scrollbar { width: 6px; }
+        .terminal-scroll::-webkit-scrollbar-track { background: #00132b; }
+        .terminal-scroll::-webkit-scrollbar-thumb { background: rgba(118, 244, 224, 0.25); border-radius: 3px; }
+        .terminal-scroll::-webkit-scrollbar-thumb:hover { background: rgba(118, 244, 224, 0.4); }
+        .prose-docs h1 { font-size: 30px; font-weight: 700; color: #002652; margin: 24px 0 12px; }
+        .prose-docs h2 { font-size: 22px; font-weight: 700; color: #002652; margin: 28px 0 10px; border-top: 1px solid #dcdfe6; padding-top: 20px; }
+        .prose-docs h3 { font-size: 17px; font-weight: 600; color: #002652; margin: 20px 0 8px; }
+        .prose-docs p { margin: 10px 0; line-height: 1.7; color: #33383f; }
+        .prose-docs ul, .prose-docs ol { margin: 10px 0 10px 22px; color: #33383f; }
+        .prose-docs li { margin: 4px 0; }
+        .prose-docs code { background: #f0f2f5; border-radius: 4px; padding: 2px 6px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+        .prose-docs pre { background: #00132b; color: #e2e6ee; border-radius: 10px; padding: 16px; overflow-x: auto; margin: 14px 0; }
+        .prose-docs pre code { background: none; padding: 0; color: inherit; }
+        .prose-docs table { border-collapse: collapse; width: 100%; margin: 14px 0; }
+        .prose-docs th, .prose-docs td { border: 1px solid #dcdfe6; padding: 8px 12px; text-align: left; font-size: 14px; }
+        .prose-docs th { background: #f0f2f5; }
+        .prose-docs a { color: #006b5f; text-decoration: underline; }
+        .prose-docs img { max-width: 100%; }
+        .prose-docs blockquote { border-left: 3px solid #76f4e0; padding-left: 14px; color: #605d64; margin: 12px 0; }
+    </style>
+    {% block head_extra %}{% endblock %}
+</head>
+<body class="bg-background text-[#1a1c1d] flex h-screen overflow-hidden font-sans antialiased">
+
+    <aside class="hidden lg:flex flex-col w-[260px] bg-surface-card border-r border-outline-variant/60 h-full z-20 shadow-sm">
+        <div class="p-6 flex items-center gap-3.5 border-b border-outline-variant/30">
+            <div class="w-10 h-10 rounded-xl bg-primary text-turquoise-glow flex items-center justify-center shadow-md shadow-primary/20">
+                <span class="material-symbols-outlined text-[24px]">view_in_ar</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-[18px] text-primary tracking-tight leading-none mb-1">ÇiniDev</h1>
+                <p class="font-mono text-[11px] text-tertiary font-medium">Local Workspace</p>
+            </div>
+        </div>
+
+        <div class="flex-1 px-4 py-6 flex flex-col gap-1.5">
+            {% set nav_items = [
+                ('projects', '/', 'folder_open', 'Projects'),
+                ('monitor', '/monitor', 'monitoring', 'Resource Monitor'),
+                ('activity', '/activity', 'history', 'Activity Log'),
+                ('docs', '/docs', 'menu_book', 'Documentation'),
+            ] %}
+            {% for key, href, icon, label in nav_items %}
+            {% if active_page == key %}
+            <a class="flex items-center gap-3 px-3.5 py-2.5 bg-turquoise-glow/15 text-secondary rounded-xl font-semibold text-[14px] transition-all" href="{{ href }}">
+                <span class="material-symbols-outlined text-[20px]">{{ icon }}</span>
+                <span>{{ label }}</span>
+            </a>
+            {% else %}
+            <a class="flex items-center gap-3 px-3.5 py-2.5 text-tertiary hover:bg-surface-variant/70 hover:text-primary rounded-xl font-medium text-[14px] transition-all" href="{{ href }}">
+                <span class="material-symbols-outlined text-[20px]">{{ icon }}</span>
+                <span>{{ label }}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="p-4 border-t border-outline-variant/30">
+            <div class="bg-surface-variant/50 p-3 rounded-xl flex items-center gap-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="font-mono text-[12px] text-tertiary">Engine: Active</span>
+            </div>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col relative overflow-hidden">
+        <main class="flex-1 overflow-y-auto px-8 py-10 flex flex-col">
+            <div class="max-w-7xl w-full mx-auto flex flex-col flex-1">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    {% block modals %}{% endblock %}
+
+    <script>
+        function toggleModal(id, show) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            if (show) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+            else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+        }
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

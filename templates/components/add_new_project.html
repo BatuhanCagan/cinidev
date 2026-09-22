@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ÇiniDev - Add New Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#006f63",
+                      "on-error-container": "#93000a",
+                      "primary": "#002652",
+                      "on-surface-variant": "#434750",
+                      "surface-variant": "#e2e2e4",
+                      "secondary-fixed": "#79f7e3",
+                      "on-primary-fixed-variant": "#154685",
+                      "primary-fixed-dim": "#aac7ff",
+                      "primary-fixed": "#d6e3ff",
+                      "inverse-on-surface": "#f0f0f2",
+                      "secondary-container": "#76f4e0",
+                      "surface-bright": "#f9f9fb",
+                      "on-error": "#ffffff",
+                      "background": "#f9f9fb",
+                      "surface-container-low": "#f3f3f5",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#00201c",
+                      "secondary-fixed-dim": "#59dbc7",
+                      "tertiary-fixed-dim": "#ffb3b1",
+                      "on-tertiary-fixed-variant": "#92001c",
+                      "outline": "#737781",
+                      "on-primary-container": "#80a7ed",
+                      "inverse-surface": "#2f3132",
+                      "tertiary": "#55000c",
+                      "on-tertiary-fixed": "#410007",
+                      "on-surface": "#1a1c1d",
+                      "inverse-primary": "#aac7ff",
+                      "on-secondary-fixed-variant": "#005047",
+                      "surface-dim": "#d9dadc",
+                      "on-background": "#1a1c1d",
+                      "secondary": "#006b5f",
+                      "on-primary-fixed": "#001b3e",
+                      "outline-variant": "#c3c6d2",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e8e8ea",
+                      "surface-tint": "#345e9f",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#003b7a",
+                      "tertiary-fixed": "#ffdad8",
+                      "surface": "#f9f9fb",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#edeef0",
+                      "surface-container-highest": "#e2e2e4",
+                      "tertiary-container": "#7e0017",
+                      "on-tertiary-container": "#ff8080",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-margin": "48px",
+                      "container-padding": "32px",
+                      "card-gap": "16px",
+                      "unit": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .pattern-bg {
+            background-color: #f9f9fb;
+            background-image: radial-gradient(#c3c6d2 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .iznik-border {
+            background-image: repeating-linear-gradient(45deg, #002652 0, #002652 2px, transparent 2px, transparent 4px, #006b5f 4px, #006b5f 6px, transparent 6px, transparent 8px);
+        }
+        .glass-panel {
+            background: rgba(249, 249, 251, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .ceramic-shadow {
+            box-shadow: 0px 12px 40px rgba(0, 59, 122, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex overflow-hidden">
+<!-- Background App State Simulation (Blurred Dashboard) -->
+<div class="fixed inset-0 z-0 opacity-40 blur-sm pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9IacUDrc9Un93eL1mBNTbaoGFaabhc8BOEhm3TBb89j3UETFsY-hQa1Pir4sFY88xakUmZTgKlR4wkbKBqwlLee5oq1hRy_g_xOEReb8I9x3dzU59_FYwvj79hrIlZUIl79W5KElnCsQYuWapYe-eMYoQFFBu13M0GNwDk8Wajcl-2PUZe8bqmcLtszuAGp6b-HKRTnbkM2A-zBsWB_E_MX-TReAwePnpwyir3bLfhhHhxliCHM6N'); background-size: cover; background-position: center;"></div>
+<!-- Fallback background if screen missing -->
+<div class="fixed inset-0 z-[-1] pattern-bg opacity-30"></div>
+<!-- SideNavBar (Simulated Background) -->
+<nav class="fixed left-0 top-0 h-full w-[280px] bg-surface border-r border-primary/10 shadow-[0px_4px_20px_rgba(0,59,122,0.05)] flex flex-col py-container-padding z-10 opacity-30">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">ÇiniDev</h1>
+<p class="font-label-md text-label-md text-outline mt-1">Master Architect</p>
+</div>
+<div class="flex-1 px-4 space-y-2">
+<!-- Simulated Nav Items -->
+<div class="flex items-center px-4 py-3 rounded-lg bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined mr-3">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></div>
+<div class="flex items-center px-4 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-surface-container-low"><span class="material-symbols-outlined mr-3">account_tree</span><span class="font-body-md text-body-md">Projects</span></div>
+</div>
+</nav>
+<!-- TopAppBar (Simulated Background) -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface/90 border-b border-primary/10 flex items-center justify-between px-gutter z-10 opacity-30">
+<div class="flex gap-6">
+<span class="font-body-md text-body-md text-on-surface-variant">Status</span>
+</div>
+</header>
+<!-- Modal Overlay Container -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 sm:ml-[280px]">
+<!-- Backdrop -->
+<div aria-hidden="true" class="absolute inset-0 bg-primary/20 backdrop-blur-sm transition-opacity"></div>
+<!-- Modal Dialog -->
+<div aria-labelledby="modal-title" aria-modal="true" class="relative w-full max-w-2xl bg-surface-bright rounded-xl ceramic-shadow overflow-hidden flex flex-col max-h-[921px]" role="dialog">
+<!-- Ceramic Header Strip (Iznik Pattern) -->
+<div class="h-2 w-full iznik-border"></div>
+<!-- Modal Header -->
+<div class="px-8 py-6 border-b border-primary/10 flex items-center justify-between bg-surface-container-lowest">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold" id="modal-title">Add New Project</h2>
+<p class="font-body-md text-body-md text-outline mt-1">Add a new building block to your workspace.</p>
+</div>
+<button aria-label="Close" class="text-outline hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="px-8 py-8 overflow-y-auto bg-surface-container-lowest">
+<form class="space-y-6">
+<!-- Project Name -->
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2" for="project_name">Project Name</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary focus:shadow-[0_0_12px_rgba(0,107,95,0.2)] transition-shadow placeholder-outline/50 outline-none" id="project_name" name="project_name" placeholder="e.g. cini-api-service" type="text"/>
+</div>
+<!-- Project Directory -->
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2" for="folder_path">Project Directory</label>
+<div class="relative">
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg pl-4 pr-12 py-3 font-code-sm text-code-sm text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary focus:shadow-[0_0_12px_rgba(0,107,95,0.2)] transition-shadow placeholder-outline/50 outline-none" id="folder_path" name="folder_path" placeholder="/Users/dev/projects/" type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">folder_open</span>
+</div>
+</div>
+</div>
+<!-- Tech Stack -->
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2">Tech Stack</label>
+<div class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 min-h-[56px] focus-within:ring-2 focus-within:ring-secondary focus-within:border-secondary focus-within:shadow-[0_0_12px_rgba(0,107,95,0.2)] transition-shadow cursor-text flex flex-wrap gap-2 items-center">
+<!-- Selected Chips -->
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
+<span class="font-label-md text-[12px] leading-[16px] mr-1">React</span>
+<button class="hover:text-primary transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+<span class="font-label-md text-[12px] leading-[16px] mr-1">Node.js</span>
+<button class="hover:text-secondary transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</span>
+<input class="flex-1 min-w-[100px] border-none bg-transparent p-0 focus:ring-0 font-body-md text-body-md text-on-surface placeholder-outline/50 outline-none" placeholder="Search..." type="text"/>
+</div>
+<p class="font-body-md text-[13px] text-outline mt-2">Select the frameworks and libraries used by this project.</p>
+</div>
+<!-- Grid Layout for Port and Command -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Port Configuration -->
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2" for="port_config">Port Configuration</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-code-sm text-code-sm text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary focus:shadow-[0_0_12px_rgba(0,107,95,0.2)] transition-shadow placeholder-outline/50 outline-none" id="port_config" name="port_config" placeholder="3000" type="number"/>
+</div>
+<!-- Start Command -->
+<div>
+<label class="block font-label-md text-label-md text-primary mb-2" for="start_command">Start Command</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-code-sm text-code-sm text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary focus:shadow-[0_0_12px_rgba(0,107,95,0.2)] transition-shadow placeholder-outline/50 outline-none" id="start_command" name="start_command" placeholder="npm run dev" type="text"/>
+</div>
+</div>
+</form>
+</div>
+<!-- Modal Footer (Actions) -->
+<div class="px-8 py-5 border-t border-primary/10 flex justify-end gap-4 bg-surface-container-low mt-auto">
+<button class="px-6 py-2.5 rounded-lg font-label-md text-label-md text-secondary border-[1.5px] border-secondary hover:bg-secondary/5 transition-colors" type="button">
+                    Cancel
+                </button>
+<button class="px-6 py-2.5 rounded-lg font-label-md text-label-md text-on-primary bg-primary hover:bg-secondary shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.05), transparent);" type="button">
+                    Create Project
+                </button>
+</div>
+</div>
+</div>
+</body></html>

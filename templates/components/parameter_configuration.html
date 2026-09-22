@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ÇiniDev - Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1c1d",
+                        "inverse-primary": "#aac7ff",
+                        "outline": "#737781",
+                        "on-primary-container": "#80a7ed",
+                        "inverse-on-surface": "#f0f0f2",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-surface-variant": "#434750",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e2e2e4",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed-variant": "#92001c",
+                        "tertiary": "#55000c",
+                        "outline-variant": "#c3c6d2",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f3f5",
+                        "secondary-fixed-dim": "#59dbc7",
+                        "on-secondary-fixed": "#00201c",
+                        "primary-container": "#003b7a",
+                        "surface-tint": "#345e9f",
+                        "surface-container": "#edeef0",
+                        "on-surface": "#1a1c1d",
+                        "on-tertiary-fixed": "#410007",
+                        "on-secondary-container": "#006f63",
+                        "secondary-fixed": "#79f7e3",
+                        "on-tertiary-container": "#ff8080",
+                        "on-secondary-fixed-variant": "#005047",
+                        "background": "#f9f9fb",
+                        "secondary-container": "#76f4e0",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#aac7ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#002652",
+                        "tertiary-fixed": "#ffdad8",
+                        "tertiary-container": "#7e0017",
+                        "surface-variant": "#e2e2e4",
+                        "on-primary-fixed": "#001b3e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#154685",
+                        "secondary": "#006b5f",
+                        "surface": "#f9f9fb",
+                        "surface-dim": "#d9dadc",
+                        "surface-bright": "#f9f9fb",
+                        "inverse-surface": "#2f3132",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-padding": "32px",
+                        "gutter": "24px",
+                        "section-margin": "48px",
+                        "card-gap": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "code-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ceramic-border-top {
+            background-image: repeating-linear-gradient(45deg, #00A896 0, #00A896 10px, transparent 10px, transparent 20px, #003B7A 20px, #003B7A 30px, transparent 30px, transparent 40px);
+            background-size: 56px 56px;
+        }
+        .bg-cream {
+            background-color: #FFFDF5;
+        }
+        .border-cobalt-10 {
+            border-color: rgba(0, 59, 122, 0.1);
+        }
+        .shadow-elevation-2 {
+            box-shadow: 0px 12px 40px rgba(0, 59, 122, 0.12), inset 0 0 0 1px #ffffff;
+        }
+        .glass-overlay {
+            background: rgba(249, 249, 251, 0.7);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md h-screen w-screen overflow-hidden flex relative">
+<!-- Background Context (Blurred) -->
+<div class="absolute inset-0 z-0 flex flex-col blur-sm opacity-50 pointer-events-none">
+<!-- Simulated Top Nav -->
+<header class="bg-surface shadow-sm border-b border-outline-variant flex justify-between items-center w-full px-container-padding h-16 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">ÇiniDev</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-secondary pb-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant" href="#">Infrastructure</a>
+<a class="text-on-surface-variant" href="#">Templates</a>
+</nav>
+</div>
+</header>
+<!-- Simulated Main Content Area -->
+<div class="flex flex-1">
+<aside class="hidden lg:flex flex-col w-[280px] p-4 gap-4 bg-surface-container-lowest border-r border-outline-variant">
+<div class="p-2 bg-secondary-container text-on-secondary-container rounded-lg font-bold">Projects</div>
+<div class="p-2 text-on-surface-variant">Deployments</div>
+</aside>
+<main class="flex-1 p-8">
+<div class="h-64 bg-cream border border-cobalt-10 rounded-lg mb-4 shadow-[0px_4px_20px_rgba(0,59,122,0.05)]"></div>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-48 bg-cream border border-cobalt-10 rounded-lg shadow-[0px_4px_20px_rgba(0,59,122,0.05)]"></div>
+<div class="h-48 bg-cream border border-cobalt-10 rounded-lg shadow-[0px_4px_20px_rgba(0,59,122,0.05)]"></div>
+<div class="h-48 bg-cream border border-cobalt-10 rounded-lg shadow-[0px_4px_20px_rgba(0,59,122,0.05)]"></div>
+</div>
+</main>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="absolute inset-0 z-50 flex items-center justify-center p-4 glass-overlay">
+<!-- Modal Container -->
+<div class="bg-surface-container-lowest w-full max-w-3xl rounded-xl shadow-elevation-2 flex flex-col overflow-hidden relative">
+<!-- Ceramic Header Strip -->
+<div class="h-1 w-full ceramic-border-top"></div>
+<!-- Header -->
+<div class="px-6 py-5 border-b border-outline-variant flex justify-between items-start bg-cream">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Configuration - my-flask-api</h2>
+<div class="flex items-center gap-3">
+<span class="font-code-sm text-code-sm text-on-surface-variant px-2 py-0.5 bg-surface-variant rounded-md">/home/user/projects/api</span>
+<span class="flex items-center gap-1 text-secondary font-label-md text-label-md bg-secondary/10 px-2.5 py-0.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                            Running
+                        </span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+</div>
+<!-- Body -->
+<div class="p-6 overflow-y-auto max-h-[614px] flex flex-col gap-8">
+<!-- Environment Variables Section -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-sm text-headline-sm text-primary font-semibold">Environment Variables</h3>
+<button class="flex items-center gap-1 text-secondary font-label-md text-label-md hover:bg-secondary/10 px-3 py-1.5 rounded-lg transition-colors border border-transparent hover:border-secondary/20">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add New
+                        </button>
+</div>
+<div class="bg-surface rounded-lg border border-outline-variant overflow-hidden">
+<div class="grid grid-cols-[1fr_1fr_auto] gap-4 p-3 bg-surface-variant/30 border-b border-outline-variant text-on-surface-variant font-label-md text-label-md">
+<div>Key</div>
+<div>Value</div>
+<div class="w-10"></div>
+</div>
+<div class="flex flex-col">
+<!-- Row 1 -->
+<div class="grid grid-cols-[1fr_1fr_auto] gap-4 p-3 items-center border-b border-outline-variant/50 hover:bg-surface-variant/10 transition-colors">
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 font-code-sm text-code-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full" type="text" value="DB_HOST"/>
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 font-code-sm text-code-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full" type="text" value="localhost"/>
+<button class="text-outline hover:text-error transition-colors p-1.5 rounded hover:bg-error/10">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-[1fr_1fr_auto] gap-4 p-3 items-center hover:bg-surface-variant/10 transition-colors">
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 font-code-sm text-code-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full" type="text" value="PORT"/>
+<input class="bg-surface-container-lowest border border-outline-variant rounded px-3 py-1.5 font-code-sm text-code-sm focus:border-secondary focus:ring-1 focus:ring-secondary outline-none w-full" type="text" value="5000"/>
+<button class="text-outline hover:text-error transition-colors p-1.5 rounded hover:bg-error/10">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<div class="flex items-center justify-center">
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="w-2 h-2 rotate-45 border border-primary mx-4"></div>
+<div class="h-px bg-outline-variant w-full"></div>
+</div>
+<!-- Runtime Settings Section -->
+<section>
+<h3 class="font-headline-sm text-headline-sm text-primary font-semibold mb-4">Runtime Settings</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Port Configuration</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-2 font-code-sm text-code-sm focus:border-secondary focus:ring-2 focus:ring-secondary/30 outline-none w-full transition-all" type="text" value="5000"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Start Script</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-2 font-code-sm text-code-sm focus:border-secondary focus:ring-2 focus:ring-secondary/30 outline-none w-full transition-all" type="text" value="python app.py"/>
+</div>
+</div>
+</section>
+<!-- Build Logs Toggle Section -->
+<section class="bg-cream border border-cobalt-10 rounded-lg p-4 flex justify-between items-center">
+<div>
+<h4 class="font-label-md text-label-md text-primary font-semibold">Persistent Build Logs</h4>
+<p class="font-body-sm text-sm text-on-surface-variant mt-0.5">Save container output to disk for debugging.</p>
+</div>
+<!-- Custom Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</section>
+</div>
+<!-- Footer -->
+<div class="px-6 py-4 border-t border-outline-variant bg-surface-container-low flex justify-end gap-3">
+<button class="px-5 py-2 font-label-md text-label-md rounded-lg border-[1.5px] border-primary text-primary hover:bg-primary/5 transition-colors">
+                    Cancel
+                </button>
+<button class="px-6 py-2 font-label-md text-label-md rounded-lg bg-secondary text-on-secondary shadow-md hover:bg-secondary/90 hover:shadow-lg transition-all" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.05), transparent);">
+                    Save
+                </button>
+</div>
+</div>
+</div>
+</body></html>
